@@ -1,0 +1,10 @@
+websockets>11.0.2,<12.0
+dingtalk-stream
+alibabacloud-dingtalk
+alibabacloud-tea-openapi
+alibabacloud-tea-util
+requests
+python-dotenv
+aiohttp
+loguru
+sseclient-py

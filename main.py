@@ -37,16 +37,7 @@ def setup_logger():
         )
     )
     
-    # 创建文件处理器
-    file_handler = logging.FileHandler('dingtalk_ai_bot.log', encoding='utf-8')
-    file_handler.setFormatter(
-        logging.Formatter(
-            '%(asctime)s %(name)-12s %(levelname)-8s %(message)s [%(filename)s:%(lineno)d]'
-        )
-    )
-    
     logger.addHandler(console_handler)
-    logger.addHandler(file_handler)
     logger.setLevel(getattr(logging, Config.LOG_LEVEL.upper()))
     
     return logger

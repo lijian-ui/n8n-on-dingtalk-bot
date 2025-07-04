@@ -3,29 +3,9 @@ version: '3.8'
 services:
   dingtalk-ai-bot:
     build: .
-    container_name: n8n-on-dingtalk
+    image: n8n-on-dingtalk-bot:latest
+    container_name: n8n-on-dingtalk-bot
     restart: unless-stopped
-    environment:
-      # 钉钉应用配置
-      - DINGTALK_CLIENT_ID=${DINGTALK_CLIENT_ID}
-      - DINGTALK_CLIENT_SECRET=${DINGTALK_CLIENT_SECRET}
-      - DINGTALK_ROBOT_CODE=${DINGTALK_ROBOT_CODE}
-      
-      # n8n Webhook配置
-      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
-      - N8N_API_KEY=${N8N_API_KEY}
-      - N8N_WEBHOOK_TIMEOUT=${N8N_WEBHOOK_TIMEOUT}
-      
-      # 机器人配置
-      - BOT_NAME=${BOT_NAME:-AI助手}
-      - MAX_MESSAGE_LENGTH=${MAX_MESSAGE_LENGTH:-2000}
-      
-      # 日志配置
-      - LOG_LEVEL=${LOG_LEVEL:-INFO}
-    
-    volumes:
-      # 挂载日志目录
-      - ./logs:/app/logs
-      # 挂载.env文件，便于多环境配置
-      - ./.env:/app/.env:ro
+    env_file:
+      - .env
     

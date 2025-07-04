@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.11-slim
 
 # 设置工作目录
 WORKDIR /app
@@ -17,15 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt -i https://mirrors.aliyun.com
 # 复制应用代码
 COPY . .
 
-# 创建日志目录
-RUN mkdir -p /app/logs
-
 # 设置环境变量
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 
-# 暴露端口（如果需要HTTP服务）
-# EXPOSE 8000
+
 
 # 启动命令
 CMD ["python", "main.py"] 
